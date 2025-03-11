@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Luis Viegas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
