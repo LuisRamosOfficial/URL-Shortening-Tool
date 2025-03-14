@@ -85,6 +85,10 @@ body {
         button:hover {
           background-color: rgb(113, 27, 27);
         }
+        button:active {
+          background-color: rgb(224, 224, 224);
+          color: rgb(113, 27, 27);
+        }
       }
     }
   }

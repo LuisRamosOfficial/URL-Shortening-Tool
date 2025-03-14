@@ -6,6 +6,9 @@ const port = 8080
 
 app.get('/:code', (req, res) => {
     console.log(req.params.code);
+    res.send('Redirecting...')
+})
+app.get('/', (req, res) => {
     res.send('Paste the code after the slash "/" for redirection!!  ')
 })
 
