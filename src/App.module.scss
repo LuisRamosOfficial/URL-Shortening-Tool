@@ -6,6 +6,7 @@
 
 body {
   width: 100vw;
+  overflow-x: hidden;
   min-height: 100vh;
   background-color: rgb(17, 17, 17);
   background-image: url("./assets/background.svg");
@@ -35,11 +36,32 @@ body {
         padding: 1rem 2rem 1rem 2rem;
       }
     }
+    
     div.box:hover {
       background-color: rgb(32, 32, 32);
 
     }
+    h4 {
+      margin-top: 1rem;
+      color: rgb(255, 100, 100);
+    }
     div.box {
+
+
+      div.creatinglink {
+        p {
+          text-decoration: none;
+          font-size: 1rem;
+        }
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: 20%;
+        }
+      }
+
       transition: all 200ms ease-out;
       padding-bottom: 2rem;
       p {

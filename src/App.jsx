@@ -6,8 +6,20 @@ import { getAnalytics } from "firebase/analytics";
 import { createSignal } from 'solid-js'
 import { getFirestore } from "firebase/firestore";
 import { addDoc, collection } from 'firebase/firestore';
+import { generateString } from './assets/codegenerator';
+import loading from './assets/loading.gif';
 
 
+
+const isValidUrl = ( urlString )=> {
+  var urlPattern = new RegExp('^(https?:\\/\\/)?'+ 
+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ 
+'((\\d{1,3}\\.){3}\\d{1,3}))'+
+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
+'(\\?[;&a-z\\d%_.~+=-]*)?'+ 
+'(\\#[-a-z\\d_]*)?$','i'); 
+return !!urlPattern.test(urlString); 
+}
 
 function App() {
   const app = initializeApp(firebaseConfig);
@@ -15,19 +27,32 @@ function App() {
   const db = getFirestore(app);
 
 
+  const [linkPhase, setlinkPhase] = createSignal(0);
   const [link, setlink] = createSignal("");
+  const [errorMessage, setErrorMessage] = createSignal("");
+  const [code, setCode] = createSignal("");
 
 
   const sendlink = async () => {
-    try {
+    setlinkPhase(0);
+    setErrorMessage('')
+    if (!isValidUrl(link())) {
+      setErrorMessage("Url not valid!!!")
+      return;
+    }
 
+
+
+    setCode(generateString(20));
+    try {
+      setlinkPhase(1)
       const docRef = await addDoc(collection(db, "shortlinks"), {
 
-        code: "teste",
+        code: code(),
 
         link: link(),
       });
-
+      setlinkPhase(2);
       console.log("Document written with ID: ", docRef.id);
 
     } catch (e) {
@@ -50,7 +75,15 @@ function App() {
           <input onKeyUp={(e) => setlink(e.target.value)}/>
           <button onClick={sendlink}>Short it!</button>
         </div>
-        </div>
+        <h4>{errorMessage()}</h4>
+        {linkPhase() == 1 ? <><div class={styles.creatinglink}>
+          <img src={loading}/>
+          <p>Creating Link...</p>
+        </div></>: <></>}
+        {linkPhase() == 2 ? <><div class={styles.linkdone}>
+          <h1>Your link is done!!</h1>
+        </div></>: <></>}
+        </div>  
     </div>
   );
 }
