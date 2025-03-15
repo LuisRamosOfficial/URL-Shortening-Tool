@@ -81,7 +81,8 @@ function App() {
           <p>Creating Link...</p>
         </div></>: <></>}
         {linkPhase() == 2 ? <><div class={styles.linkdone}>
-          <h1>Your link is done!!</h1>
+          <h1>Your link is done!! Here:</h1>
+          <h2>{`https://zvide.fun/s/${code()}`}</h2>
         </div></>: <></>}
         </div>  
     </div>
