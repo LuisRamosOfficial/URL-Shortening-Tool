@@ -25,10 +25,11 @@ const getCollectionData = async () => {
   };
   
 
-app.get('/:code', async (req, res) => {
+
+app.get('/', async (req, res) => {
     await getCollectionData().then(
         data => {
-            const [resultado] = data.filter((item) => item.code == req.params.code)
+            const [resultado] = data.filter((item) => item.code == req.query.a)
             if (resultado == null) {
                 res.send('404 Error: Short link not found!');
             }
@@ -38,10 +39,6 @@ app.get('/:code', async (req, res) => {
         
         }
     )
-    // res.send('Redirecting...')
-})
-app.get('/', (req, res) => {
-    res.send('Paste the code after the slash "/" for redirection!!  ')
 })
 
 
