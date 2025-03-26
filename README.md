@@ -1,34 +1,70 @@
-## Usage
+# URL Shortener
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+A simple and efficient URL shortener built with **SolidJS** and **Firebase** for the frontend and **Express.js** for the backend.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## 🚀 Features
 
-```bash
-$ npm install # or pnpm install or yarn install
+- Shorten long URLs into concise, shareable links.
+- Track the number of visits for each shortened URL.
+- User authentication via Firebase.
+- Responsive and minimalistic UI.
+- API for shortening and retrieving URLs.
+
+## 🛠️ Tech Stack
+
+### Frontend
+- [SolidJS](https://www.solidjs.com/)
+- [Firebase](https://firebase.google.com/)
+
+### Backend
+- [Express.js](https://expressjs.com/)
+
+## 🔧 Installation
+
+### Prerequisites
+- Node.js installed
+- Firebase project setup
+- MongoDB database (if applicable)
+
+### Backend Setup
+```sh
+cd backend
+npm install
+npm start
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+### Frontend Setup
+```sh
+cd frontend
+npm install
+npm run dev
+```
 
-## Available Scripts
+## 📌 API Endpoints
 
-In the project directory, you can run:
+### Shorten a URL
+**POST** `/api/shorten`
+#### Request Body
+```json
+{
+  "longUrl": "https://example.com"
+}
+```
+#### Response
+```json
+{
+  "shortUrl": "https://s.zvide.fun/?a=yNJPyKU2dvZFSgovpwel"
+}
+```
 
-### `npm run dev` or `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Redirects users to the original long URL.
 
-The page will reload if you make edits.<br>
+## 📜 License
 
-### `npm run build`
+This project is licensed under the MIT License.
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Made with ❤️ by Luis Ramos
 
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
