@@ -1,4 +1,5 @@
 # URL Shortener
+![image](https://github.com/user-attachments/assets/4acc8e0d-fbdf-4499-b32a-420fa3951c51)
 
 A simple and efficient URL shortener built with **SolidJS** and **Firebase** for the frontend and **Express.js** for the backend.
 
